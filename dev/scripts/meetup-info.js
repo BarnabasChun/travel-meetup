@@ -8,9 +8,9 @@ export default class Meetups extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="meetups">
         <ReturnHomeBtn />
-        <ul className="meetups flex-container">
+        <ul className="meetups__list flex-container">
           {this.props.data.map(meetup => {
             return <li key={meetup.id} className="meetups__item">
               <h2>{meetup.name}</h2>
