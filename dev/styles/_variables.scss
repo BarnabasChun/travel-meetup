@@ -3,13 +3,8 @@ $secondaryColor: #3b8ea5;
 
 @mixin tile {
     background: #fff;
-    padding: 15px 50px;
-    margin-bottom: 10px;
-    width: calc(33.33% - 6.67px);
-    margin-right: 10px;
-    &:nth-child(3n) {
-        margin-right: 0px;
-    }
+    // margin-bottom: 10px;
+    // margin-right: 10px;
     span {
         font-weight: 700;
     }

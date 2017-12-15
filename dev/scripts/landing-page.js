@@ -81,7 +81,7 @@ class LandingPage extends React.Component {
                     <h1>Travel Meetup</h1>
                     <h2>Find upcoming meetups and nearby restaurants!</h2>
                 </header>
-                <div className="form__inputs">
+                <div className="form__inputs flex-container">
                     <input 
                         id="searchTextField"
                         type="text"
@@ -89,6 +89,7 @@ class LandingPage extends React.Component {
                         placeholder="Enter a city"
                         name="locationInput"
                         required
+                        className="location-input"
                     />
                     <select name="categoryInput" onChange={this.handleChange} required>
                         {this.state.meetupCategories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}

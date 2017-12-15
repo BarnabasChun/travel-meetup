@@ -2,13 +2,29 @@
     text-align: center;
     height: 100vh;
     padding: 1px;
-    margin-top: 250px;
+    margin-top: 300px;
+}
+
+.form__inputs {
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .form__inputs > * {
     margin-right: 5px;
     &:last-child {
         margin-right: 0;
+    }
+    @media (max-width: 642px) {
+        width: calc(50% - 2.5px);
+    }
+}
+
+.location-input {
+    @media (max-width: 642px) {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2.5px;
     }
 }
 
@@ -23,7 +39,7 @@ input {
 }
 
 select {
-    height: 32px;
+    height: 35px;
 }
 
 .form__search-btn {

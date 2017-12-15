@@ -4,6 +4,37 @@
 
 .meetups__item {
     @include tile;
+    padding: 15px 30px;
+    @media (min-width: 320px) {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    @media (min-width: 480px) {
+        width: calc(50% - 5px);
+        margin-right: 10px;
+        padding: 10px 15px;
+        &:nth-child(2n) {
+            margin-right: 0;
+        }
+        button {
+            margin-bottom: 5px;
+            &:last-child { 
+                margin-bottom: 0;
+            }
+        }
+    }
+    @media (min-width: 840px) {
+        width: calc(33.33% - 6.67px);
+        &:nth-child(2n) {
+            margin-right: 10px;
+        }
+        &:nth-child(3n) {
+            margin-right: 0px;
+        }
+    }
+    h2 {
+        margin-top: 0;
+    }
 }
 
 .meetups__venue {

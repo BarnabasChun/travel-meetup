@@ -8,9 +8,9 @@ class Restaurants extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="restaurants">
                 <ReturnHomeBtn />
-                <ul className="restaurants flex-container">
+                <ul className="restaurants-list flex-container">
                     {this.props.data.map(restaurant => {
                         return <li key={restaurant.id} className="restaurants__item">
                             <p><span>Address: </span>{restaurant.vicinity}</p>
