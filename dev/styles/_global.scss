@@ -26,6 +26,7 @@ a {
 }
 
 #app {
+    min-height: 100vh;
     height: 100%;
     background: rgba(0, 0, 0, 0.75) fixed;
     background-size: cover;
@@ -59,4 +60,8 @@ button {
     a {
         color: #fff;
     }
+}
+
+.return-home-btn {
+    margin-top: 10px;
 }

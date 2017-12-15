@@ -1,8 +1,11 @@
-.meetups-list__item {
-    background: #fff;
-    padding: 10px;
-    margin-bottom: 10px;
-    &:last-child {
-        margin-bottom: 0px;
-    }
+.restaurants, .meetups {
+    flex-wrap: wrap;
+}
+
+.meetups__item {
+    @include tile;
+}
+
+.meetups__venue {
+    font-style: italic;
 }

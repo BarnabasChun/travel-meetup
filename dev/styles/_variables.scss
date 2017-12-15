@@ -1,2 +1,23 @@
 $primaryColor: #f49e4c;
 $secondaryColor: #3b8ea5;
+
+@mixin tile {
+    background: #fff;
+    padding: 15px 50px;
+    margin-bottom: 10px;
+    width: calc(33.33% - 6.67px);
+    margin-right: 10px;
+    &:nth-child(3n) {
+        margin-right: 0px;
+    }
+    span {
+        font-weight: 700;
+    }
+    button {
+        margin-right: 10px;
+        padding: 8px 10px;
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

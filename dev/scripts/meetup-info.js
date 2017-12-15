@@ -10,11 +10,11 @@ export default class Meetups extends React.Component {
     return (
       <div>
         <ReturnHomeBtn />
-        <ul className="meetups-list">
+        <ul className="meetups flex-container">
           {this.props.data.map(meetup => {
-            return <li key={meetup.id} className="meetups-list__item">
+            return <li key={meetup.id} className="meetups__item">
               <h2>{meetup.name}</h2>
-              <p>{meetup.venue.name}, {meetup.venue.address_1}</p>
+              <p className="meetups__venue">{meetup.venue.name}, {meetup.venue.address_1}</p>
               <p><span>Meetup Time: </span>{getTime(meetup.time)}</p>
               <p><span>Meetup Date: </span>{getDate(meetup.time)}</p>
               <button><a href={meetup.event_url}>Event Info</a></button>
