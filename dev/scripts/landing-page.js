@@ -76,23 +76,25 @@ class LandingPage extends React.Component {
     }
     render() {
         return (
-            <form action="" onSubmit={this.handleSubmit}>
-                <header>
-                    <h1>Travel Meetups</h1>
-                    <h2>Find upcoming meetups and nearby restaurants in your area!</h2>
+            <form action="" onSubmit={this.handleSubmit} className="landing-page">
+                <header className="form__header">
+                    <h1>Travel Meetup</h1>
+                    <h2>Find upcoming meetups and nearby restaurants!</h2>
                 </header>
-                <input 
-                    id="searchTextField"
-                    type="text"
-                    size="50"
-                    placeholder="Enter a city"
-                    name="locationInput"
-                    required
-                />
-                <select name="categoryInput" onChange={this.handleChange} required>
-                    {this.state.meetupCategories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
-                </select>
-                <button>Search</button>   
+                <div className="form__inputs">
+                    <input 
+                        id="searchTextField"
+                        type="text"
+                        size="50"
+                        placeholder="Enter a city"
+                        name="locationInput"
+                        required
+                    />
+                    <select name="categoryInput" onChange={this.handleChange} required>
+                        {this.state.meetupCategories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
+                    </select>
+                    <button className="form__search-btn">Search</button>   
+                </div>
             </form>
         )
     }

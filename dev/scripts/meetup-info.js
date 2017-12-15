@@ -10,9 +10,9 @@ export default class Meetups extends React.Component {
     return (
       <div>
         <ReturnHomeBtn />
-        <ul>
+        <ul className="meetups-list">
           {this.props.data.map(meetup => {
-            return <li key={meetup.id}>
+            return <li key={meetup.id} className="meetups-list__item">
               <h2>{meetup.name}</h2>
               <p>{meetup.venue.name}, {meetup.venue.address_1}</p>
               <p><span>Meetup Time: </span>{getTime(meetup.time)}</p>
