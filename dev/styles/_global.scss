@@ -10,6 +10,7 @@ ul {
 
 a {
     text-decoration: none;
+    padding: 10px;
 }
 
 .wrapper {
@@ -55,7 +56,8 @@ button {
     border-radius: 2.5px;
     color: #fff;
     &:hover {
-        background: $secondaryColor;
+        // background: $secondaryColor;
+        background: darken($primaryColor, 20);
         transition: background 0.4s ease;
     }
     a {

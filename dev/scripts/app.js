@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Qs from 'qs';
 import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
-import Meetups from './meetup-info';
+import Meetups from './meetups';
 import LandingPage from './landing-page';
 import Restaurants from './restaurants';
 import NotFound from './not-found';
