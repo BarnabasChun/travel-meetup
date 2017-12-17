@@ -10,6 +10,7 @@ class Restaurants extends React.Component {
         return (
             <div className="restaurants">
                 <ReturnHomeBtn />
+                <button><Link to="/meetups">Back</Link></button>
                 <ul className="restaurants__list flex-container">
                     {this.props.data.map(restaurant => {
                         return <li key={restaurant.id} className="restaurants__item">

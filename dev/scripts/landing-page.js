@@ -67,7 +67,7 @@ class LandingPage extends React.Component {
                 },
                 xmlToJSON: false
             }
-        }).then((res) => {
+        }).then(res => {
             const meetupCategories = res.data.results;
             this.setState({
                 meetupCategories
