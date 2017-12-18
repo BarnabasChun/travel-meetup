@@ -121,7 +121,8 @@ class App extends React.Component {
           <Switch>
             <Route
               exact path="/"
-              render={props => <LandingPage {...props} formSubmit={this.getMeetups} meetups={this.state.meetups}/>}
+              render={props => <LoadingSpinner {...props} formSubmit={this.getMeetups} meetups={this.state.meetups}/>}
+              // render={props => <LandingPage {...props} formSubmit={this.getMeetups} meetups={this.state.meetups}/>}
             />
             {this.state.loading ? <LoadingSpinner /> : <Route
               exact path="/meetups"

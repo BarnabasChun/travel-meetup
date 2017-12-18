@@ -68,10 +68,6 @@ button {
     margin: 10px 10px 0 0;
 }
 
-.errPage {
-    @include fullPage;
-}
-
 .fullPage {
     text-align: center;
     height: 100vh;
