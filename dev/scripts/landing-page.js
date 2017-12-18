@@ -59,16 +59,18 @@ class LandingPage extends React.Component {
         let administrativeArea = "";
         let country = "";
         
-        if (locationInput.length === 1) {
+        if (locationInput.length >= 1) {
             locality = locationInput[0];
-        } else if (locationInput.length === 2) {
-            locality = locationInput[0];
+        } 
+        
+        if (locationInput.length >= 2) {
             administrativeArea = locationInput[1];
-        } else if (locationInput.length === 3) {
-            locality = locationInput[0];
-            administrativeArea = locationInput[1];
+        }
+        
+        if (locationInput.length >= 3) {
             country = locationInput[2];
         }
+        
         this.getLatLng(locality, administrativeArea, country);
     }
     componentDidMount() {
