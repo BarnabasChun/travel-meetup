@@ -25,7 +25,7 @@ class LandingPage extends React.Component {
     getLatLng(locality, administrativeArea, country) {
         axios({
             method: 'GET',
-            url: 'http://proxy.hackeryou.com',
+            url: 'https://proxy.hackeryou.com',
             dataResponse: 'json',
             paramsSerializer: function (params) {
                 return Qs.stringify(params, { arrayFormat: 'brackets' })
@@ -129,7 +129,7 @@ class LandingPage extends React.Component {
                         id="searchTextField"
                         type="text"
                         size="50"
-                        placeholder="Enter a city"
+                        placeholder="Enter a City (e.g. Toronto, Canada)"
                         name="locationInput"
                         required
                         className="location-input"
