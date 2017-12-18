@@ -14,7 +14,7 @@ class LandingPage extends React.Component {
             lon: 0,
         }
         this.handleChange = this.handleChange.bind(this);
-        // this.getLatLng = this.getLatLng.bind(this);
+        this.getLatLng = this.getLatLng.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e) {
@@ -48,29 +48,28 @@ class LandingPage extends React.Component {
                 lat: latitude,
                 lon: longitude
             })
+            this.props.formSubmit(this.state.lat, this.state.lon, this.state.categoryInput);
+            this.props.history.push('/meetups');
         });
     }
     handleSubmit(e) {
         e.preventDefault();
-        // const locationInput = this.state.locationInput.split(',').map(locationComponent => locationComponent.trim());
-        // let locality = "";
-        // let administrativeArea = "";
-        // let country = "";
-
-        // if (locationInput.length === 1) {
-        //     locality = locationInput[0];
-        // } else if (locationInput.length === 2) {
-        //     locality = locationInput[0];
-        //     administrativeArea = locationInput[1];
-        // } else if (locationInput.length === 3) {
-        //     locality = locationInput[0];
-        //     administrativeArea = locationInput[1];
-        //     country = locationInput[2];
-        // }
-
-        // this.getLatLng(locality, administrativeArea, country);
-        this.props.formSubmit(this.state.lat, this.state.lon, this.state.categoryInput);
-        this.props.history.push('/meetups');
+        const locationInput = this.state.locationInput.split(',').map(locationComponent => locationComponent.trim());
+        let locality = "";
+        let administrativeArea = "";
+        let country = "";
+        
+        if (locationInput.length === 1) {
+            locality = locationInput[0];
+        } else if (locationInput.length === 2) {
+            locality = locationInput[0];
+            administrativeArea = locationInput[1];
+        } else if (locationInput.length === 3) {
+            locality = locationInput[0];
+            administrativeArea = locationInput[1];
+            country = locationInput[2];
+        }
+        this.getLatLng(locality, administrativeArea, country);
     }
     componentDidMount() {
         // initializing google autocomplete 

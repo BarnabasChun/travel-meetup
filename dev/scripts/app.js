@@ -15,19 +15,11 @@ class App extends React.Component {
     this.getMeetups = this.getMeetups.bind(this);
     this.getRestaurantRefs = this.getRestaurantRefs.bind(this);
     this.getRestaurantDetails = this.getRestaurantDetails.bind(this);
-    this.handleClick = this.handleClick.bind(this);
     this.state = {
       meetups: [],
       restaurants: [],
       loading: false,
     }
-  }
-  handleClick() {
-    // on click of the return home button, reset the states to empty arrays
-    this.setState({
-      meetups: [],
-      restaurants: [],
-    })
   }
   getRestaurantRefs(lat, lon) {
     axios({
