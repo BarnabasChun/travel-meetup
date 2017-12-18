@@ -87,11 +87,7 @@ class LandingPage extends React.Component {
         // when the user changes the place selected, an object 'place' is created and from that the latitude and longitude is taken
         google.maps.event.addListener(autocomplete, `place_changed`, () => {
             var place = autocomplete.getPlace();
-            var latitude = place.geometry.location.lat();
-            var longitude = place.geometry.location.lng();
             this.setState({
-                lat: latitude,
-                lon: longitude,
                 locationInput: place.formatted_address
             }) 
         });
