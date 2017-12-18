@@ -9,21 +9,68 @@ class LandingPage extends React.Component {
         this.state = {
             categoryInput: 1,
             meetupCategories: [],
+            locationInput: '',
             lat: 0,
             lon: 0,
         }
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-    }
-    handleSubmit(e) {
-        e.preventDefault();
-        this.props.formSubmit(this.state.lat, this.state.lon, this.state.categoryInput);
-        this.props.history.push('/meetups');
+        // this.getLatLng = this.getLatLng.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
+    }
+    getLatLng(locality, administrativeArea, country) {
+        axios({
+            method: 'GET',
+            url: 'http://proxy.hackeryou.com',
+            dataResponse: 'json',
+            paramsSerializer: function (params) {
+                return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+                reqUrl: 'https://maps.googleapis.com/maps/api/geocode/json',
+                params: {
+                    key: 'AIzaSyDGfwsmW6wPeO-DzvircnZj0SDtp6enZ9o',
+                    components: `locality:${locality}|administrative_area:${administrativeArea}|country:${country}`,
+                },
+                proxyHeaders: {
+                    'header_params': 'value'
+                },
+                xmlToJSON: false
+            }
+        }).then(res => {
+            const latitude = res.data.results[0].geometry.location.lat;
+            const longitude = res.data.results[0].geometry.location.lng;
+            this.setState({
+                lat: latitude,
+                lon: longitude
+            })
+        });
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        // const locationInput = this.state.locationInput.split(',').map(locationComponent => locationComponent.trim());
+        // let locality = "";
+        // let administrativeArea = "";
+        // let country = "";
+
+        // if (locationInput.length === 1) {
+        //     locality = locationInput[0];
+        // } else if (locationInput.length === 2) {
+        //     locality = locationInput[0];
+        //     administrativeArea = locationInput[1];
+        // } else if (locationInput.length === 3) {
+        //     locality = locationInput[0];
+        //     administrativeArea = locationInput[1];
+        //     country = locationInput[2];
+        // }
+
+        // this.getLatLng(locality, administrativeArea, country);
+        this.props.formSubmit(this.state.lat, this.state.lon, this.state.categoryInput);
+        this.props.history.push('/meetups');
     }
     componentDidMount() {
         // initializing google autocomplete 
@@ -45,7 +92,8 @@ class LandingPage extends React.Component {
             var longitude = place.geometry.location.lng();
             this.setState({
                 lat: latitude,
-                lon: longitude
+                lon: longitude,
+                locationInput: place.formatted_address
             }) 
         });
 
@@ -76,7 +124,7 @@ class LandingPage extends React.Component {
     }
     render() {
         return (
-            <form action="" onSubmit={this.handleSubmit} className="landing-page">
+            <form action="" onSubmit={this.handleSubmit} className="landing-page fullPage">
                 <header className="form__header">
                     <h1>Travel Meetup</h1>
                     <h2>Find upcoming meetups and nearby restaurants!</h2>
@@ -90,6 +138,7 @@ class LandingPage extends React.Component {
                         name="locationInput"
                         required
                         className="location-input"
+                        onChange={this.handleChange}
                     />
                     <select name="categoryInput" onChange={this.handleChange} required>
                         {this.state.meetupCategories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}

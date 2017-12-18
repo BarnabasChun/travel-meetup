@@ -10,10 +10,10 @@ export default class Meetups extends React.Component {
     return (
       <div className="meetups">
         <ReturnHomeBtn />
-        {this.props.data.length > 0 ? 
-        <ul className="meetups__list flex-container">
+        {this.props.data.length > 0 
+          ? <ul className="meetups__list flex-container">
           {this.props.data.map(meetup => {
-            return <li key={meetup.id} className="meetups__item">
+            return <li key={meetup.id} className="meetups__item tile">
               <h2>{meetup.name}</h2>
               <p className="meetups__venue">{meetup.venue.name}, {meetup.venue.address_1}</p>
               <p><span>Meetup Time: </span>{getTime(meetup.time)}</p>
@@ -26,7 +26,7 @@ export default class Meetups extends React.Component {
             </li>
           })}
         </ul>
-        : <h2>Oops! No meetups found. You might have entered an invalid location. Try again.</h2>
+          : <h2>No meetups found. You may have entered an incorrect location, try again.</h2>
         }
       </div>
     )
