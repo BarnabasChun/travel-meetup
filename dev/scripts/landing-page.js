@@ -54,22 +54,15 @@ class LandingPage extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const locationInput = this.state.locationInput.split(',').map(locationComponent => locationComponent.trim());
-        let locality = "";
-        let administrativeArea = "";
-        let country = "";
+        const locationInput = this.state.locationInput
+            .split(',')
+            .map(locationComponent =>
+              locationComponent.trim()
+            );
         
-        if (locationInput.length >= 1) {
-            locality = locationInput[0];
-        } 
-        
-        if (locationInput.length >= 2) {
-            administrativeArea = locationInput[1];
-        }
-        
-        if (locationInput.length >= 3) {
-            country = locationInput[2];
-        }
+        const locality = locationInput[0] || '';
+        const administrativeArea = locationInput[1] || '';
+        const country = locationInput[2] || '';
         
         this.getLatLng(locality, administrativeArea, country);
     }
